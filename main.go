@@ -135,6 +135,13 @@ type SectionHandler func(sectionKey string, parentPath string, parent *jwcc.Obje
 
 func handleArray() SectionHandler {
 	return func(sectionKey string, parentPath string, parent *jwcc.Object, childPath string, childSection *jwcc.Member) {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Println("Recovered in handleArray", r)
+				fmt.Println(sectionKey, parentPath, childPath)
+			}
+		}()
+
 		parentProps := parent.FindKey(ast.TextEqual(sectionKey))
 		if parentProps != nil {
 			pathComment(parentProps.Value.(*jwcc.Array).Values[0], parentPath)
