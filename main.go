@@ -144,7 +144,7 @@ func handleArray() SectionHandler {
 				fmt.Printf("%s\n", parentProps.JSON())
 			}
 		}()
-		if parentProps != nil {
+		if parentProps != nil && len(parentProps.Value.(*jwcc.Array).Values) > 0 {
 			pathComment(parentProps.Value.(*jwcc.Array).Values[0], parentPath)
 		}
 
