@@ -1,4 +1,4 @@
-module github.com/tailscale-dev/tailscale-acl-combiner
+module github.com/twelsh-aw/tailscale-acl-combiner
 
 go 1.21
 
